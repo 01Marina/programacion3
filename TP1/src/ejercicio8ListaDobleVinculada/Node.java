@@ -1,18 +1,28 @@
-package ejercicio1;
+package ejercicio8ListaDobleVinculada;
+
 
 public class Node<T> {
 
 	private T info;
+	private Node<T> prev;
 	private Node<T> next;
 
 	public Node() {
-		this.info = null;
-		this.next = null;
+		this(null,null, null);
 	}
 	
-	public Node(T info, Node<T> next) {
+	public Node(T info,Node<T> prev, Node<T> next) {
 		this.setInfo(info);
+		this.setprev(prev);
 		this.setNext(next);
+	}
+	
+	public Node<T> getPrev() {
+		return prev;
+	}
+
+	public void setprev(Node<T> prev) {
+		this.prev = prev;
 	}
 	
 	public Node<T> getNext() {
@@ -36,7 +46,7 @@ public class Node<T> {
 	}
 	
 	public boolean equals(Node<T> node) {
-		return this.info.equals(node.getInfo()) && this.next == node.getNext();
+		return this.info.equals(node.getInfo()) && this.next == node.getNext() && this.prev==node.getPrev();
 	}
 
 }

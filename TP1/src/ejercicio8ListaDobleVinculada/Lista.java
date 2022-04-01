@@ -1,18 +1,19 @@
-package ejercicio1;
+package ejercicio8ListaDobleVinculada;
 
-public class MySimpleLinkedList<T> {
-	
+
+public class Lista<T> {
 	private Node<T> first;
 	private int size;
 	
-	public MySimpleLinkedList() {
+	public Lista() {
 		this.first = null;
 		this.size = 0;
 	}
 	
 	public void insertFront(T info) {
-		Node<T> tmp = new Node<T>(info,null);
+		Node<T> tmp = new Node<T>(info,null, null);
 		tmp.setNext(this.first);
+		this.first.setprev(tmp);
 		this.first = tmp;
 		this.size++;
 	}
@@ -20,7 +21,8 @@ public class MySimpleLinkedList<T> {
 	public T extractFront() {		
 		Node<T> extractFirst = this.first;
 		if(!this.isEmpty()) {
-			this.first = this.first.getNext();
+			this.first.getNext().setprev(null);
+			this.first = first.getNext();
 			this.size--;
 			return extractFirst.getInfo();
 		}
@@ -54,5 +56,4 @@ public class MySimpleLinkedList<T> {
 		}
 		return toString;
 	}
-	
 }

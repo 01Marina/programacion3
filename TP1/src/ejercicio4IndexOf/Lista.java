@@ -1,13 +1,31 @@
-package ejercicio1;
+package ejercicio4IndexOf;
 
-public class MySimpleLinkedList<T> {
-	
+import ejercicio1.Node;
+
+public class Lista<T> {
 	private Node<T> first;
 	private int size;
 	
-	public MySimpleLinkedList() {
+	public Lista() {
 		this.first = null;
 		this.size = 0;
+	}
+	
+	public int indexOF(T info) {
+		boolean find = false;
+		int index = 1;
+		Node<T> tmp = this.first;
+		while(index < this.size && !find) {
+			if(tmp.equals(info)) {
+				find = true;
+			}
+			tmp = tmp.getNext();
+			index++;
+		}
+		if(index == 0) {
+			return -1;
+		}
+		return index;
 	}
 	
 	public void insertFront(T info) {
@@ -19,8 +37,8 @@ public class MySimpleLinkedList<T> {
 	
 	public T extractFront() {		
 		Node<T> extractFirst = this.first;
-		if(!this.isEmpty()) {
-			this.first = this.first.getNext();
+		if(extractFirst!=null) {
+			this.first = extractFirst.getNext();
 			this.size--;
 			return extractFirst.getInfo();
 		}

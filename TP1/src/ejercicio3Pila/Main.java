@@ -1,4 +1,4 @@
-package ejercicio2Pila;
+package ejercicio3Pila;
 
 public class Main {
 

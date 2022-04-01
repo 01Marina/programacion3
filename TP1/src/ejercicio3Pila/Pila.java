@@ -1,4 +1,4 @@
-package ejercicio2Pila;
+package ejercicio3Pila;
 import ejercicio1.Node;
 
 public class Pila<T> {
@@ -20,7 +20,7 @@ public class Pila<T> {
 	public T pop() {		
 		Node<T> extractFirst = this.first;
 		if(!this.isEmpty()) {
-			this.first = extractFirst.getNext();
+			this.first = this.first.getNext();
 			this.size--;
 			return extractFirst.getInfo();
 		}
