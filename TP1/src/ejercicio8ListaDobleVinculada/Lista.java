@@ -1,6 +1,5 @@
 package ejercicio8ListaDobleVinculada;
 
-
 public class Lista<T> {
 	private Node<T> first;
 	private int size;
@@ -34,12 +33,24 @@ public class Lista<T> {
 	}
 	
 	public T get(int index) {
+		if(index > this.size || index <0) {
+			return null;
+		}
 		Node<T> temp = this.first;
 		while(index > 1) {
 			temp = temp.getNext();
 			index--;
 		}
 		return temp.getInfo();
+	}
+	
+	public T get2(int index, Node<T> first) {
+		int n = index--;
+		if(n!=0) {
+			return this.get2(n, first.getNext());
+		}else {
+			return first.getInfo();
+		}
 	}
 	
 	public int size() {

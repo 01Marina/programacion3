@@ -36,12 +36,24 @@ public class Pila<T> {
 	}
 	
 	public T get(int index) {
+		if(index > this.size || index <0) {
+			return null;
+		}
 		Node<T> temp = this.first;
 		while(index > 1) {
 			temp = temp.getNext();
 			index--;
 		}
 		return temp.getInfo();
+	}
+	
+	public T get2(int index, Node<T> first) {
+		int n = index--;
+		if(n!=0) {
+			return this.get2(n, first.getNext());
+		}else {
+			return first.getInfo();
+		}
 	}
 	
 	public int size() {
@@ -59,15 +71,14 @@ public class Pila<T> {
 	    Pila<T> pilaCopy = this.copy();
 	    Pila<T> pilaReverse = new Pila<T>();
 	    while (!pilaCopy.isEmpty()) {
-	    	pilaReverse.push(pilaCopy.first.getInfo());
-	    	pilaCopy.pop();
+	    	pilaReverse.push(pilaCopy.pop());
     	}
     	return pilaReverse;
     }
 	
 	@Override
 	public String toString() {
-		String toString = "Pila";
+		String toString = "Pila"+System.lineSeparator();
 		Node<T> temp = this.first;
 		while(temp != null) {
 			toString += temp.toString()+System.lineSeparator();

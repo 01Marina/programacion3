@@ -1,23 +1,25 @@
-package ejercicio1;
+package ejercicio5IteradorIterable;
+import ejercicio1.Node;
 
-public class MySimpleLinkedList<T> {
-	
+public class Pila<T> {
 	private Node<T> first;
 	private int size;
+	private Iterate<T> iterator;
 	
-	public MySimpleLinkedList() {
+	public Pila() {
 		this.first = null;
 		this.size = 0;
+		this.iterator = new Iterate<T>(this.first);
 	}
 	
-	public void insertFront(T info) {
+	public void push(T info) {
 		Node<T> tmp = new Node<T>(info,null);
 		tmp.setNext(this.first);
 		this.first = tmp;
 		this.size++;
 	}
 	
-	public T extractFront() {		
+	public T pop() {		
 		Node<T> extractFirst = this.first;
 		if(!this.isEmpty()) {
 			this.first = this.first.getNext();
@@ -26,6 +28,10 @@ public class MySimpleLinkedList<T> {
 		}
 		return null;
 	}
+	
+	public T top() {
+        return this.first.getInfo();
+    }
 
 	public boolean isEmpty() {
 		return this.first == null;
@@ -56,9 +62,25 @@ public class MySimpleLinkedList<T> {
 		return this.size;
 	}
 	
+	public Pila<T> copy() {
+    	Pila<T> pilaCopy = new Pila<T>();
+    	pilaCopy.push(this.first.getInfo());
+    	pilaCopy.first.setNext(this.first.getNext());
+    	return pilaCopy;
+    }
+    
+    public Pila<T> reverse() {
+	    Pila<T> pilaCopy = this.copy();
+	    Pila<T> pilaReverse = new Pila<T>();
+	    while (!pilaCopy.isEmpty()) {
+	    	pilaReverse.push(pilaCopy.pop());
+    	}
+    	return pilaReverse;
+    }
+	
 	@Override
 	public String toString() {
-		String toString = "";
+		String toString = "Pila"+System.lineSeparator();
 		Node<T> temp = this.first;
 		while(temp != null) {
 			toString += temp.toString()+System.lineSeparator();
@@ -66,5 +88,4 @@ public class MySimpleLinkedList<T> {
 		}
 		return toString;
 	}
-	
 }

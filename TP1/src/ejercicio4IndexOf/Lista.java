@@ -13,16 +13,17 @@ public class Lista<T> {
 	
 	public int indexOF(T info) {
 		boolean find = false;
-		int index = 1;
+		int index = 0;
 		Node<T> tmp = this.first;
 		while(index < this.size && !find) {
-			if(tmp.equals(info)) {
+			if(tmp.getInfo() == info) {
 				find = true;
-			}
-			tmp = tmp.getNext();
+			}else {
+				tmp = tmp.getNext();
 			index++;
+			}
 		}
-		if(index == 0) {
+		if(!find) {
 			return -1;
 		}
 		return index;
@@ -50,12 +51,24 @@ public class Lista<T> {
 	}
 	
 	public T get(int index) {
+		if(index > this.size || index <0) {
+			return null;
+		}
 		Node<T> temp = this.first;
 		while(index > 1) {
 			temp = temp.getNext();
 			index--;
 		}
 		return temp.getInfo();
+	}
+	
+	public T get2(int index, Node<T> first) {
+		int n = index--;
+		if(n!=0) {
+			return this.get2(n, first.getNext());
+		}else {
+			return first.getInfo();
+		}
 	}
 	
 	public int size() {
