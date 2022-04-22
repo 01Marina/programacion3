@@ -1,11 +1,10 @@
-package ejercicio5IteradorIterable;
-import ejercicio1.Node;
+package ejercicio7ArbolBinario;
 
-public class Pila<T> {
+public class List<T> {
 	private Node<T> first;
 	private int size;
 	
-	public Pila() {
+	public List() {
 		this.first = null;
 		this.size = 0;
 	}
@@ -30,10 +29,6 @@ public class Pila<T> {
 	public T top() {
         return this.first.getInfo();
     }
-	
-	public Node<T> getFirst(){
-		return this.first;
-	}
 
 	public boolean isEmpty() {
 		return this.first == null;
@@ -60,20 +55,28 @@ public class Pila<T> {
 		}
 	}
 	
+	public boolean hasElement(int value,int index, Node<T> first) {
+		if(first.getInfo() != value) {
+			return this.get2(value, first.getNext());
+		}else {
+			return t;
+		}
+	}
+	
 	public int size() {
 		return this.size;
 	}
 	
-	public Pila<T> copy() {
-    	Pila<T> pilaCopy = new Pila<T>();
+	public List<T> copy() {
+    	List<T> pilaCopy = new List<T>();
     	pilaCopy.push(this.first.getInfo());
     	pilaCopy.first.setNext(this.first.getNext());
     	return pilaCopy;
     }
     
-    public Pila<T> reverse() {
-	    Pila<T> pilaCopy = this.copy();
-	    Pila<T> pilaReverse = new Pila<T>();
+    public List<T> reverse() {
+	    List<T> pilaCopy = this.copy();
+	    List<T> pilaReverse = new List<T>();
 	    while (!pilaCopy.isEmpty()) {
 	    	pilaReverse.push(pilaCopy.pop());
     	}

@@ -1,5 +1,4 @@
-package ejercicio5IteradorIterable;
-import ejercicio1.Node;
+package ejercicio2;
 
 public class Pila<T> {
 	private Node<T> first;
@@ -27,13 +26,13 @@ public class Pila<T> {
 		return null;
 	}
 	
-	public T top() {
-        return this.first.getInfo();
-    }
-	
 	public Node<T> getFirst(){
 		return this.first;
 	}
+	
+	public T top() {
+        return this.first.getInfo();
+    }
 
 	public boolean isEmpty() {
 		return this.first == null;

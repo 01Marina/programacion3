@@ -1,4 +1,4 @@
-package ejercicio5IteradorIterable;
+package ejercicio2;
 
 public interface Iterator<T> {
 	void start();

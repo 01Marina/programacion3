@@ -1,5 +1,4 @@
-package ejercicio5IteradorIterable;
-import ejercicio1.Node;
+package ejercicio2;
 
 public class Iterate<T> implements  Iterator<T>{
 	
