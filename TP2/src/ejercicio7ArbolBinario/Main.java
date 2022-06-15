@@ -12,7 +12,7 @@ public class Main {
 		t.add(7);
 		t.add(9);
 		t.add(8);
-		/*t.add(12);*/
+		t.add(12);/**/
 		
 		t.printPreorder();
 		System.out.print("\n");
@@ -52,6 +52,8 @@ public class Main {
 		
 		System.out.print("\n");
 		System.out.print(t.getLongestBranch());
+		
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package ejercicio7ArbolBinario;
 
+
 public class List<T> {
 	private Node<T> first;
 	private int size;
@@ -55,13 +56,21 @@ public class List<T> {
 		}
 	}
 	
-	public boolean hasElement(int value,int index, Node<T> first) {
-		if(first.getInfo() != value) {
-			return this.get2(value, first.getNext());
-		}else {
-			return t;
-		}
+	public boolean hasElement(Integer value) {
+		return this.hasElement(value, first, 0);
 	}
+	public boolean hasElement(Integer value, Node<T> first, int index) {
+		if(first != null) {
+			if(first.getInfo() != value && index<=size-1 ) {
+				return this.hasElement(value, first.getNext(), index+1);
+			}else if(first.getInfo() == value ){
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
 	
 	public int size() {
 		return this.size;

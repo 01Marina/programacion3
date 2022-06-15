@@ -213,15 +213,10 @@ public class BinaryTree {
 		if(node !=null){
 			listAux.push(node.getValue());
         	if(level == height && node.getLeft() == null && node.getRight() == null) {
-        		//listAux = listAux.reverse();
         		while (!listAux.isEmpty()) {
         	    	list.push(listAux.pop());
             	}
-        		if(!hasElem(this.root.getValue())) {
-        			list.push(this.root.getValue());
-        		}
-        		//list.push(-1);
-			}else if (level != height && node.getLeft() == null && node.getRight() == null){
+        	}else if (level != height && node.getLeft() == null && node.getRight() == null){
 				int i = height - level;
 				while (i !=0) {
         	    	listAux.pop();
